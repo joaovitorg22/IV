@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15108690373340" configfile="/MeuEmpregadoP/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="listaPontos.xhtml" id="pf15111772268110" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15111772268121" path="/listaPontos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="painelAdministrativo.xhtml" x="216" id="pf15111772268122" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15111772268121" path="/painelAdministrativo.xhtml"/>
+  <links id="pf15111772268121" target="pf15111772268122" source="pf15111772268110" outcome="painelAdministrativo"/>
+</pageflow:Pageflow>

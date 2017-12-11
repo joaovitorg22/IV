@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+	<!--  IMPORTANDO HEAD -->
+	<ui:include src="incPainel/painelHead.xhtml" />
+
+
+</h:head>
+<h:body class="nav-md">
+
+	<div class="container body">
+
+		<div class="main_container">
+
+			<!--  IMPORTANDO MENU PRINCIPAL -->
+			<ui:include src="incPainel/painelMenu.xhtml" />
+
+			<!-- IMPORTANDO MENU TOPO -->
+			<ui:include src="incPainel/painelMenuTopo.xhtml" />
+			<!-- PAGINA PRINCIPAL -->
+
+			<div class="right_col" role="main">
+				<div class="">
+					<!-- INSIRA SEU TITULO -->
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Lista de Horários
+										<div>Alexandre Hammerschmidt Caos</div>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li class="dropdown"><a href="#" class="dropdown-toggle"
+											data-toggle="dropdown" role="button" aria-expanded="false"><i
+												class="fa fa-wrench"></i></a>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">Configuração</a></li>
+											</ul></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<br />
+									<!-- INSIRA SEU <form> -->
+									<h:panelGrid>
+									<p:commandButton styleClass="btn btn-primary" value="Voltar"
+											action="meses?faces-redirect=true" />
+									
+									</h:panelGrid>
+									<h:form id="form">
+										<p:growl id="msgs" showDetail="true" />
+
+										<p:dataTable id="tabela" var="ponto"
+											value="#{pontoMB.listaPontos}" editable="true"
+											style="margin-bottom:20px">
+
+											<p:ajax event="rowEdit" listener="#{pontoMB.onRowEdit}"
+												update=":form:msgs" />
+											<p:ajax event="rowEditCancel"
+												listener="#{pontoMB.onRowCancel}" update=":form:msgs" />
+
+											<p:column headerText="Data">
+												<p:cellEditor>
+													<f:facet name="output">
+														<h:outputText value="#{ponto.data}" />
+													</f:facet>
+													<f:facet name="input">
+														<p:inputText id="modelInput" value="#{ponto.data}"
+															style="width:100%" />
+													</f:facet>
+												</p:cellEditor>
+											</p:column>
+
+											<p:column headerText="Hora Entrada">
+												<p:cellEditor>
+													<f:facet name="output">
+														<h:outputText value="#{ponto.horaEntrada}" />
+													</f:facet>
+													<f:facet name="input">
+														<p:inputText value="#{ponto.horaEntrada}"
+															style="width:100%" label="horaEntrada" />
+													</f:facet>
+												</p:cellEditor>
+											</p:column>
+
+											<p:column headerText="Hora Entrada Almoço">
+												<p:cellEditor>
+													<f:facet name="output">
+														<h:outputText value="#{ponto.horaEntradaAlmoco}" />
+													</f:facet>
+													<f:facet name="input">
+														<p:inputText value="#{ponto.horaEntradaAlmoco}"
+															style="width:100%" label="horaEntradaAlmoco" />
+													</f:facet>
+												</p:cellEditor>
+											</p:column>
+
+											<p:column headerText="Hora Saida Almoço">
+												<p:cellEditor>
+													<f:facet name="output">
+														<h:outputText value="#{ponto.horaSaidaAlmoco}" />
+													</f:facet>
+													<f:facet name="input">
+														<p:inputText value="#{ponto.horaSaidaAlmoco}"
+															style="width:100%" label="horaSaidaAlmoco" />
+													</f:facet>
+												</p:cellEditor>
+											</p:column>
+											
+											<p:column headerText="Hora Saida">
+												<p:cellEditor>
+													<f:facet name="output">
+														<h:outputText value="#{ponto.horaSaida}" />
+													</f:facet>
+													<f:facet name="input">
+														<p:inputText value="#{ponto.horaSaida}"
+															style="width:100%" label="horaSaida" />
+													</f:facet>
+												</p:cellEditor>
+											</p:column>
+											<p:column>
+												<f:facet name="header">
+													<h:outputLabel value="Horas Trabalhadas"/>
+												</f:facet>
+										    	<h:outputText value="#{ponto.horasTrabalhadas}"/>
+											</p:column>
+
+											<p:column style="width:32px">
+												<p:rowEditor />
+											</p:column>
+										</p:dataTable>
+									</h:form>
+									<!-- INSIRA SEU </form> -->
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- / PAGINA PRINCIPAL -->
+
+		</div>
+
+
+
+		<!-- FOOTER PRINCIPAL -->
+		<ui:include src="incPainel/painelFooter.xhtml" />
+		<!-- /FOOTER PRINCIPAL -->
+	</div>
+	<!-- IMPORT JS -->
+	<ui:include src="incPainel/painelImportsJs.xhtml" />
+	<!-- /IMPORT JS -->
+</h:body>
+</html>

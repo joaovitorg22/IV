@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<ui:include src="incPainel/painelHead.xhtml" />
+	<title>Impostos</title>
+
+	<link rel="stylesheet" href="../css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../css/style.css" />
+</h:head>
+
+
+<h:body>
+	<main class="container"> <f:view>
+		<h:form>
+			<h1>Lista de Impostos</h1>
+
+			<h:dataTable styleClass="table table-striped" var="i"
+				value="#{impostoEmpregadoMB.listAll() }" id="tblImpostos">
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel>Empregador</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.contrato.empregador.nome }" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel>CPF/CNPJ</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.contrato.empregador.cpf }" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputFormat>Mês</h:outputFormat>
+					</f:facet>
+					<h:outputText value="#{i.mesFormated }" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel styleClass="alignment-right">Salário</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.salarioFormated }"
+						styleClass="alignment-right" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel styleClass="alignment-right">INSS</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.inssFormated }"
+						styleClass="alignment-right" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel styleClass="alignment-right">IRF</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.irfFormated }"
+						styleClass="alignment-right" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputLabel styleClass="alignment-right">Total</h:outputLabel>
+					</f:facet>
+					<h:outputText value="#{i.totalFormated }"
+						styleClass="alignment-right" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</f:view> </main>
+
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="../js/jquery-3.2.1.min.js"></script>
+
+
+</h:body>
+</html>
